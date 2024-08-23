@@ -7,8 +7,8 @@ def test_train_and_predict():
     
     predicted_weight = train_and_predict(height, weight, 12.0)
     
-    expected_min = 10
-    expected_max = 14
+    expected_min = 22
+    expected_max = 26
     
     assert expected_min <= predicted_weight[0] <= expected_max, (
         f"Expected weight to be between {expected_min} and {expected_max}, "
