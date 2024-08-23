@@ -1,5 +1,5 @@
 import pytest
-from lab2_prg1 import train_and_predict
+from Lab2_LinearR import train_and_predict
 
 def test_train_and_predict():
     height = [[4.0], [5.0], [6.0], [7.0], [8.0], [9.0], [10.0]]
