@@ -34,4 +34,4 @@ jobs:
 
     - name: Run tests with pytest  # Run the tests using pytest
       run: |
-        pytest test_lab2_prg1.py
+        pytest test_lab2_LinearR.py
