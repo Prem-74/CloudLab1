@@ -1,0 +1,37 @@
+# .github/workflows/python-app.yml
+
+name: Python application  # The name of the workflow
+
+on:
+  push:  # Trigger the workflow on push to the main branch
+    branches: [ "main" ]
+  pull_request:  # Trigger the workflow on pull requests to the main branch
+    branches: [ "main" ]
+
+permissions:
+  contents: read  # Set the permissions for this workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+
+    steps:
+    - uses: actions/checkout@v4  # Checkout the repository code
+    - name: Set up Python 3.10  # Set up the Python environment
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies  # Install necessary Python packages
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest matplotlib scikit-learn
+    
+    - name: Lint with flake8  # Lint the codebase
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Run tests with pytest  # Run the tests using pytest
+      run: |
+        pytest test_lab2_prg1.py
